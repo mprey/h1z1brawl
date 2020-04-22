@@ -50,7 +50,7 @@ export default class JackpotDepositModal extends Component {
        return (
          <i className="fa fa-spinner fa-pulse fa-3x fa-fw ItemLoading"></i>
        )
-    } else if (error) {
+    } else if (error && items.length === 0) {
       return (
         <div className="Modal__CreateCoinflip-Error">
           <span>An error ocurred loading your inventory. You may not have any tradeable { config.metadata.gameName } items or Steam is offline.</span>
