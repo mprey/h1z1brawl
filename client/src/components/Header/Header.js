@@ -27,6 +27,9 @@ class Header extends Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
+            <LinkContainer activeClassName="" to="/jackpot">
+              <NavItem>Jackpot</NavItem>
+            </LinkContainer>
             <LinkContainer activeClassName="" to="/coinflip">
               <NavItem>Coinflip</NavItem>
             </LinkContainer>
