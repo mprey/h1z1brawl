@@ -1,0 +1,129 @@
+.Landing {
+  z-index: 4;
+  position: fixed;
+  top: 0; right: 0; left: 0;
+  bottom: 0;
+  overflow-y: scroll;
+  text-align: center;
+  color: #b5babb;
+  background-color: rgba(38, 38, 44, 0.95);
+
+  img {
+    height: 120px;
+    margin-top: 50px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+  }
+
+  h1 {
+    margin-top: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    text-transform: uppercase;
+    line-height: 15px;
+  }
+
+  hr {
+    width: 70%;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(189, 181, 181, 0), rgba(189, 181, 181, 0.55), rgba(189, 181, 181, 0));
+  }
+}
+
+.Landing__Stats {
+  width: 50%;
+  margin: 0 auto;
+
+  .Landing__Stats-Selector {
+    font-size: 10px;
+    color: rgb(185, 25, 63);
+    text-decoration: underline;
+
+    span {
+      margin: 0 2px;
+      cursor: pointer;
+
+      &:last-child:after {
+        content: '';
+      }
+
+      &:after {
+        content: '|';
+        width: 1px;
+        margin-left: 2px;
+        text-decoration: none;
+        cursor: default;
+        display: inline-block;
+      }
+    }
+  }
+}
+
+.Landng__EnterButton {
+  height: 50px;
+  width: 280px;
+  background: rgb(172, 0, 41);
+  cursor: pointer;
+  color: #eee;
+  margin: 0 auto;
+  position: relative;
+  line-height: 50px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 22px;
+  outline: none;
+  border: 0;
+  font-family: "Roboto";
+  padding: 10px 80px;
+  padding-left: 15px;
+  margin: 50px auto;
+  display: inline-flex;
+  cursor: pointer;
+  align-items: center;
+  border-radius: 5px;
+  text-transform: uppercase;
+  transition: background 0.3s ease;
+  transition-property: background;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  transition-delay: initial;
+
+  &:hover {
+    background: rgb(198, 43, 80);
+    text-decoration: none;
+    color: #eee;
+  }
+
+  p {
+    text-transform: uppercase;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    line-height: 50px;
+  }
+
+  i {
+    position: absolute;
+    top: 50%;
+  }
+}
+
+.Landing__TOS {
+  opacity: 0.5;
+  text-transform: uppercase;
+  font-size: 12px;
+
+  a {
+    text-decoration: underline;
+    color: inherit;
+    transition: 0.3s ease;
+
+    &:hover {
+      color: #989b9c;
+    }
+  }
+}

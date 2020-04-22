@@ -1,0 +1,25 @@
+.Modal__TradeOffer {
+  height: 215px;
+  width: 400px;
+}
+
+.Modal__TradeOffer-Content {
+  color: #939496;
+
+  p {
+    padding-top: 10px;
+    margin: 0;
+  }
+
+  span {
+    font-size: 11px;
+    background: rgb(26, 26, 26);
+    font-weight: bold;
+    padding: 2px 4px;
+    border-radius: 3px;
+  }
+
+  a {
+    background-color: rgb(92, 145, 89);
+  }
+}

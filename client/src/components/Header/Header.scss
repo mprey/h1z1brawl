@@ -1,0 +1,124 @@
+$navColor: rgba(22, 22, 22, 0.7);
+
+.Navbar__Logo {
+  height: 65px;
+}
+
+.Navbar .navbar-nav > .open > a, .Navbar .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  color: #eee;
+  background-color: transparent;
+}
+
+.Navbar .navbar-nav > .open > a, .Navbar .navbar-nav > .active > a {
+  background-image: none;
+}
+
+.Navbar__Dropdown {
+  line-height: 65px;
+  color: #eee;
+  margin-right: 17px;
+
+  img {
+    height: 45px;
+    border-radius: 50%;
+  }
+
+  i {
+    color: #c3bdbd;
+    position: absolute;
+    top: 50%; left: -10px;
+    transform: translateY(-50%);
+  }
+
+  span.Navbar__Dropdown-Level {
+    position: absolute;
+    line-height: 8px;
+    padding: 3px 4px;
+    font-size: 9px;
+    border-radius: 50%;
+    color: #eee;
+    border: 2px solid $navColor;
+    background-color: rgba(96, 90, 90, 1);
+    bottom: 4px; right: -4px;
+  }
+}
+
+.Navbar {
+  z-index: 3 !important;
+  background: $navColor;
+  border-color: $navColor;
+  margin-bottom: 0px !important;
+
+  .container {
+    padding-left: 0px;
+    padding-right: 0px;
+    width: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .navbar-nav > li > a {
+    line-height: 35px;
+    text-shadow: none;
+    color: #eee;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: 0.3s ease;
+
+    &.active {
+      background-image: none;
+      background: $navColor;
+    }
+
+    &:focus {
+      color: rgb(177, 179, 182);
+    }
+
+    &:hover {
+      color: rgb(177, 179, 182);
+    }
+
+    &:after {
+      content:"";
+      background: rgba(#c1c1c1, 0.61);
+      position: absolute;
+      bottom: 0;
+      top: 0;
+      margin: auto 0;
+      left: 0;
+      height: 70%;
+      width: 1px;
+    }
+  }
+
+  .dropdown-menu {
+    background-color: $navColor;
+    color: #eee;
+
+    p {
+      color: red;
+    }
+
+    & > li > a {
+      color: #eee;
+
+      &:hover {
+        background-color: #eee;
+        color: $navColor;
+        background-image: none;
+      }
+
+      span {
+        margin-right: 5px;
+      }
+    }
+
+    & > li {
+      display: inline;
+    }
+  }
+
+  .navbar-toggle {
+    margin-top: 16px;
+  }
+}

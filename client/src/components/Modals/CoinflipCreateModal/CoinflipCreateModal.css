@@ -1,0 +1,210 @@
+.Modal__CreateCoinflip {
+  height: 270px;
+  width: 500px; }
+
+.Modal__CreateCoinflip-Content {
+  background: #303030;
+  height: calc(100% - 40px); }
+  .Modal__CreateCoinflip-Content a {
+    background: #ba2929;
+    border: none;
+    box-shadow: 0px 0px 3px black; }
+    .Modal__CreateCoinflip-Content a:hover {
+      color: #eee; }
+  .Modal__CreateCoinflip-Content hr {
+    margin-bottom: 20px; }
+  .Modal__CreateCoinflip-Content p {
+    padding: 0;
+    margin: 0;
+    padding-top: 20px; }
+    .Modal__CreateCoinflip-Content p span {
+      background: black;
+      font-size: 9px;
+      padding: 4px 5px;
+      text-transform: uppercase;
+      font-weight: bold;
+      border-top-right-radius: 3px;
+      border-top-left-radius: 3px;
+      color: #eee; }
+  .Modal__CreateCoinflip-Content .Modal__CreateCoinflip-Coins {
+    background: #323232;
+    box-shadow: 0 0 1px black;
+    padding: 15px 0px;
+    width: 35%;
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 5px; }
+    .Modal__CreateCoinflip-Content .Modal__CreateCoinflip-Coins img {
+      height: 50px;
+      margin: 0px 15px;
+      cursor: pointer;
+      border-radius: 50%;
+      box-shadow: 0 0 4px black;
+      opacity: 0.3;
+      transition: 0.3s all; }
+      .Modal__CreateCoinflip-Content .Modal__CreateCoinflip-Coins img.selected {
+        box-shadow: 0 0 6px black;
+        opacity: 1; }
+
+.Modal__CreateCoinflip-Created {
+  width: 700px;
+  background: #303030;
+  height: 400px; }
+  .Modal__CreateCoinflip-Created .Modal__CreateCoinflip-Content {
+    text-align: left; }
+    .Modal__CreateCoinflip-Created .Modal__CreateCoinflip-Content h4 {
+      font-size: 12px;
+      color: #b6b6b6;
+      font-weight: bold;
+      margin: 0;
+      padding: 0;
+      padding: 8px 0px 0px 8px; }
+    .Modal__CreateCoinflip-Created .Modal__CreateCoinflip-Content p {
+      font-size: 9px;
+      color: #b6b6b6;
+      margin: 0;
+      padding: 0px 0px 0px 8px; }
+  .Modal__CreateCoinflip-Created .Modal__CreateCoinflip-Items {
+    display: inline-block;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    vertical-align: top;
+    height: 300px;
+    text-align: left;
+    position: relative;
+    width: calc(64% - 3px);
+    margin: 10px 0px 0px 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background: rgba(64, 64, 64, 0.51); }
+    .Modal__CreateCoinflip-Created .Modal__CreateCoinflip-Items .ItemLoading {
+      position: absolute;
+      top: calc(50% - 20px);
+      transform: translateY(-50%);
+      left: -25px;
+      right: 0;
+      margin: 0 auto;
+      color: #b6b6b6; }
+    .Modal__CreateCoinflip-Created .Modal__CreateCoinflip-Items .Modal__CreateCoinflip-Error {
+      line-height: normal;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      text-align: center;
+      width: 50%;
+      transform: translate(-50%, -50%);
+      background: #de3333;
+      padding: 10px;
+      border-radius: 4px;
+      color: #eee;
+      font-size: 11px;
+      box-shadow: 0px 0px 3px black; }
+  .Modal__CreateCoinflip-Created .Modal__CreateCoinflip-Input {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    float: right;
+    margin: 10px 15px 0px 0px;
+    width: 30%;
+    height: 300px;
+    padding-top: 10px; }
+    .Modal__CreateCoinflip-Created .Modal__CreateCoinflip-Input .Modal__CreateCoinflip-Options input {
+      display: inline-block;
+      margin-left: 40px; }
+    .Modal__CreateCoinflip-Created .Modal__CreateCoinflip-Input .Modal__CreateCoinflip-Options p {
+      display: inline-block;
+      font-size: 10px; }
+    .Modal__CreateCoinflip-Created .Modal__CreateCoinflip-Input .Modal__CreateCoinflip-Options div {
+      text-align: center;
+      padding: 10px; }
+    .Modal__CreateCoinflip-Created .Modal__CreateCoinflip-Input .Modal__CreateCoinflip-Options a {
+      position: relative;
+      display: inline-block;
+      height: 30px;
+      line-height: 30px;
+      font-size: 10px;
+      margin: 5px;
+      width: 70px;
+      padding: 0px;
+      background: #424242; }
+    .Modal__CreateCoinflip-Created .Modal__CreateCoinflip-Input .Modal__CreateCoinflip-Values {
+      padding: 10px 0px;
+      margin-bottom: 20px; }
+      .Modal__CreateCoinflip-Created .Modal__CreateCoinflip-Input .Modal__CreateCoinflip-Values p {
+        font-size: 10px;
+        padding: 4px 8px; }
+        .Modal__CreateCoinflip-Created .Modal__CreateCoinflip-Input .Modal__CreateCoinflip-Values p span {
+          float: right;
+          background: black;
+          padding: 2px 3px;
+          border-radius: 3px; }
+          .Modal__CreateCoinflip-Created .Modal__CreateCoinflip-Input .Modal__CreateCoinflip-Values p span.good {
+            background: #5bc176; }
+          .Modal__CreateCoinflip-Created .Modal__CreateCoinflip-Input .Modal__CreateCoinflip-Values p span.bad {
+            background: #dd5e5e; }
+    .Modal__CreateCoinflip-Created .Modal__CreateCoinflip-Input .InputHeader {
+      text-align: left;
+      padding: 0 !important;
+      border-bottom: 1px solid black; }
+      .Modal__CreateCoinflip-Created .Modal__CreateCoinflip-Input .InputHeader span {
+        background: none;
+        font-size: 8px;
+        padding: 0;
+        margin: 0; }
+    .Modal__CreateCoinflip-Created .Modal__CreateCoinflip-Input .CreateGame {
+      text-align: center;
+      position: absolute;
+      bottom: 10px;
+      right: 0;
+      left: 0;
+      margin: 0 auto; }
+  .Modal__CreateCoinflip-Created a.noselect {
+    display: block;
+    position: absolute;
+    top: 48px;
+    right: 10px;
+    background-color: rgba(152, 152, 152, 0.9);
+    width: 130px;
+    height: 30px;
+    line-height: 30px;
+    color: #eee;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+    transition: all 0.25s cubic-bezier(0.31, -0.105, 0.43, 1.4);
+    margin: 0 auto; }
+    .Modal__CreateCoinflip-Created a.noselect div,
+    .Modal__CreateCoinflip-Created a.noselect span {
+      display: block;
+      height: 100%;
+      text-align: center;
+      position: absolute;
+      top: 0; }
+    .Modal__CreateCoinflip-Created a.noselect span {
+      width: 75%;
+      line-height: inherit;
+      font-size: 10px;
+      text-transform: uppercase;
+      left: 0;
+      transition: all 0.25s cubic-bezier(0.31, -0.105, 0.43, 1.4); }
+      .Modal__CreateCoinflip-Created a.noselect span:after {
+        content: '';
+        background-color: rgba(110, 110, 110, 0.9);
+        width: 2px;
+        height: 70%;
+        position: absolute;
+        top: 15%;
+        right: -1px; }
+    .Modal__CreateCoinflip-Created a.noselect div {
+      width: 25%;
+      right: 0;
+      transition: all 0.25s cubic-bezier(0.31, -0.105, 0.43, 1.4); }
+      .Modal__CreateCoinflip-Created a.noselect div .fa {
+        font-size: 13px;
+        vertical-align: middle;
+        transition: all 0.25s cubic-bezier(0.31, -0.105, 0.43, 1.4), height 0.25s ease; }
+    .Modal__CreateCoinflip-Created a.noselect:hover {
+      opacity: 0.9; }
+    .Modal__CreateCoinflip-Created a.noselect:active {
+      opacity: 1; }

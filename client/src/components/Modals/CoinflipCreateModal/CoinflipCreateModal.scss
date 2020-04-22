@@ -1,0 +1,286 @@
+$speed: "0.25s";
+$transition: all #{$speed} cubic-bezier(0.310, -0.105, 0.430, 1.400);
+
+.Modal__CreateCoinflip {
+  height: 270px;
+  width: 500px;
+}
+
+.Modal__CreateCoinflip-Content {
+  background: rgba(48, 48, 48, 1);
+  height: calc(100% - 40px);
+
+  a {
+    background: rgb(186, 41, 41);
+    border: none;
+    box-shadow: 0px 0px 3px black;
+
+    &:hover {
+      color: #eee;
+    }
+  }
+
+  hr {
+    margin-bottom: 20px;
+  }
+
+  p {
+    padding: 0;
+    margin: 0;
+    padding-top: 20px;
+
+    span {
+      background: black;
+      font-size: 9px;
+      padding: 4px 5px;
+      text-transform: uppercase;
+      font-weight: bold;
+      border-top-right-radius: 3px;
+      border-top-left-radius: 3px;
+      color: #eee;
+    }
+  }
+
+  .Modal__CreateCoinflip-Coins {
+    background: rgba(50, 50, 50, 1);
+    box-shadow: 0 0 1px black;
+    padding: 15px 0px;
+    width: 35%;
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 5px;
+
+    img {
+      height: 50px;
+      margin: 0px 15px;
+      cursor: pointer;
+      border-radius: 50%;
+      box-shadow: 0 0 4px black;
+      opacity: 0.3;
+      transition: 0.3s all;
+
+      &.selected {
+        box-shadow: 0 0 6px black;
+        opacity: 1;
+      }
+    }
+  }
+
+}
+
+.Modal__CreateCoinflip-Created {
+  width: 700px;
+  background: rgba(48, 48, 48, 1);
+  height: 400px;
+
+  .Modal__CreateCoinflip-Content {
+    text-align: left;
+
+    h4 {
+      font-size: 12px;
+      color: #b6b6b6;
+      font-weight: bold;
+      margin: 0;
+      padding: 0;
+      padding: 8px 0px 0px 8px;
+    }
+
+    p {
+      font-size: 9px;
+      color: #b6b6b6;
+      margin: 0;
+      padding: 0px 0px 0px 8px;
+    }
+  }
+
+  .Modal__CreateCoinflip-Items {
+    display: inline-block;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    vertical-align: top;
+    height: 300px;
+    text-align: left;
+    position: relative;
+    width: calc(64% - 3px);
+    margin: 10px 0px 0px 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background: rgba(64, 64, 64, 0.51);
+
+    .ItemLoading {
+      position: absolute;
+      top: calc(50% - 20px);
+      transform: translateY(-50%);
+      left: -25px; right: 0;
+      margin: 0 auto;
+      color: #b6b6b6;
+    }
+
+    .Modal__CreateCoinflip-Error {
+      line-height: normal;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      text-align: center;
+      width: 50%;
+      transform: translate(-50%, -50%);
+      background: rgb(222, 51, 51);
+      padding: 10px;
+      border-radius: 4px;
+      color: #eee;
+      font-size: 11px;
+      box-shadow: 0px 0px 3px black;
+    }
+  }
+
+  .Modal__CreateCoinflip-Input {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    float: right;
+    margin: 10px 15px 0px 0px;
+    width: 30%;
+    height: 300px;
+    padding-top: 10px;
+
+    .Modal__CreateCoinflip-Options {
+
+      input {
+        display: inline-block;
+        margin-left: 40px;
+      }
+
+      p {
+        display: inline-block;
+        font-size: 10px;
+      }
+
+      div {
+        text-align: center;
+        padding: 10px;
+      }
+
+      a {
+        position: relative;
+        display: inline-block;
+        height: 30px;
+        line-height: 30px;
+        font-size: 10px;
+        margin: 5px;
+        width: 70px;
+        padding: 0px;
+        background: rgb(66, 66, 66);
+      }
+    }
+
+    .Modal__CreateCoinflip-Values {
+      padding: 10px 0px;
+      margin-bottom: 20px;
+
+      p {
+        font-size: 10px;
+        padding: 4px 8px;
+
+        span {
+          float: right;
+          background: black;
+          padding: 2px 3px;
+          border-radius: 3px;
+
+          &.good {
+            background: rgb(91, 193, 118);
+          }
+
+          &.bad {
+            background: rgb(221, 94, 94);
+          }
+        }
+      }
+    }
+
+    .InputHeader {
+      text-align: left;
+      padding: 0 !important;
+      border-bottom: 1px solid black;
+
+      span {
+        background: none;
+        font-size: 8px;
+        padding: 0;
+        margin: 0;
+      }
+    }
+
+    .CreateGame {
+      text-align: center;
+      position: absolute;
+      bottom: 10px; right: 0; left: 0;
+      margin: 0 auto;
+    }
+  }
+
+  a.noselect {
+    display: block;
+    position: absolute;
+    top: 48px; right: 10px;
+    background-color: rgba(152, 152, 152, 0.9);
+    width: 130px;
+    height: 30px;
+    line-height: 30px;
+    color: #eee;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 0 20px 0 rgba(0,0,0,.3);
+    transition: $transition;
+    margin: 0 auto;
+
+    div,
+    span {
+      display: block;
+      height: 100%;
+      text-align: center;
+      position: absolute;
+      top: 0;
+    }
+
+    span {
+      width: 75%;
+      line-height: inherit;
+      font-size: 10px;
+      text-transform: uppercase;
+      left: 0;
+      transition: $transition;
+
+      &:after {
+        content: '';
+        background-color: rgba(110, 110, 110, 0.9);
+        width: 2px;
+        height: 70%;
+        position: absolute;
+        top: 15%;
+        right: -1px;
+      }
+    }
+
+    div {
+      width: 25%;
+      right: 0;
+      transition: $transition;
+
+      .fa {
+        font-size: 13px;
+        vertical-align: middle;
+        transition: $transition, height #{$speed} ease;
+      }
+    }
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &:active {
+      opacity: 1;
+    }
+  }
+}

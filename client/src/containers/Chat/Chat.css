@@ -1,0 +1,247 @@
+.Navbar__Logo {
+  height: 65px; }
+
+.Navbar .navbar-nav > .open > a, .Navbar .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  color: #eee;
+  background-color: transparent; }
+
+.Navbar .navbar-nav > .open > a, .Navbar .navbar-nav > .active > a {
+  background-image: none; }
+
+.Navbar__Dropdown {
+  line-height: 65px;
+  color: #eee;
+  margin-right: 17px; }
+  .Navbar__Dropdown img {
+    height: 45px;
+    border-radius: 50%; }
+  .Navbar__Dropdown i {
+    color: #c3bdbd;
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    transform: translateY(-50%); }
+  .Navbar__Dropdown span.Navbar__Dropdown-Level {
+    position: absolute;
+    line-height: 8px;
+    padding: 3px 4px;
+    font-size: 9px;
+    border-radius: 50%;
+    color: #eee;
+    border: 2px solid rgba(22, 22, 22, 0.7);
+    background-color: #605a5a;
+    bottom: 4px;
+    right: -4px; }
+
+.Navbar {
+  z-index: 3 !important;
+  background: rgba(22, 22, 22, 0.7);
+  border-color: rgba(22, 22, 22, 0.7);
+  margin-bottom: 0px !important; }
+  .Navbar .container {
+    padding-left: 0px;
+    padding-right: 0px;
+    width: auto;
+    margin-left: 20px;
+    margin-right: 20px; }
+  .Navbar .navbar-nav > li > a {
+    line-height: 35px;
+    text-shadow: none;
+    color: #eee;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: 0.3s ease; }
+    .Navbar .navbar-nav > li > a.active {
+      background-image: none;
+      background: rgba(22, 22, 22, 0.7); }
+    .Navbar .navbar-nav > li > a:focus {
+      color: #b1b3b6; }
+    .Navbar .navbar-nav > li > a:hover {
+      color: #b1b3b6; }
+    .Navbar .navbar-nav > li > a:after {
+      content: "";
+      background: rgba(193, 193, 193, 0.61);
+      position: absolute;
+      bottom: 0;
+      top: 0;
+      margin: auto 0;
+      left: 0;
+      height: 70%;
+      width: 1px; }
+  .Navbar .dropdown-menu {
+    background-color: rgba(22, 22, 22, 0.7);
+    color: #eee; }
+    .Navbar .dropdown-menu p {
+      color: red; }
+    .Navbar .dropdown-menu > li > a {
+      color: #eee; }
+      .Navbar .dropdown-menu > li > a:hover {
+        background-color: #eee;
+        color: rgba(22, 22, 22, 0.7);
+        background-image: none; }
+      .Navbar .dropdown-menu > li > a span {
+        margin-right: 5px; }
+    .Navbar .dropdown-menu > li {
+      display: inline; }
+  .Navbar .navbar-toggle {
+    margin-top: 16px; }
+
+.Chat {
+  position: fixed;
+  background-color: #161616;
+  top: 65px;
+  right: -300px;
+  width: 270px;
+  height: calc(100% - 65px);
+  box-shadow: rgba(0, 0, 0, 0.298039) -4px 0px 10px 0px;
+  z-index: 1;
+  transition: 0.3s ease; }
+  .Chat.open {
+    right: 0; }
+
+.EmoteDisplay {
+  height: 20px;
+  width: 20px;
+  margin: 5px;
+  cursor: pointer;
+  display: inline-block; }
+
+.Emote {
+  height: 24px;
+  width: 20px;
+  margin: 0 2px; }
+
+.Chat__Toggle span {
+  z-index: 2;
+  position: fixed;
+  top: 65px;
+  right: 0;
+  padding: 4px;
+  color: #fff;
+  cursor: pointer;
+  border-bottom-left-radius: 3px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.2); }
+  .Chat__Toggle span.hide {
+    display: none; }
+  .Chat__Toggle span.fa-compress {
+    background-color: #de5560; }
+  .Chat__Toggle span.fa-expand {
+    background-color: #3ebd4e; }
+
+.Chat__Advertisement {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  height: 80px;
+  text-align: center;
+  color: #fff;
+  background-color: transparent;
+  cursor: pointer; }
+
+.Chat__Header {
+  position: absolute;
+  top: 75px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  height: 30px;
+  border-bottom: 1px solid #d04949;
+  background: #181818;
+  color: #eee;
+  text-transform: uppercase;
+  line-height: 30px;
+  display: block; }
+  .Chat__Header .Chat__Header-Wrapper {
+    margin-left: 10px; }
+  .Chat__Header .Chat__Header-Icon {
+    margin-right: 5px; }
+
+.Chat__Box {
+  overflow-y: scroll;
+  position: absolute;
+  bottom: 100px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  height: calc(100% - 205px); }
+
+.Chat__Input {
+  border-top: 1px solid #d04949;
+  position: absolute;
+  background-color: #181818;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  height: 110px;
+  border-top: 1px solid rgba(31, 31, 31, 0.95); }
+  .Chat__Input textarea {
+    position: absolute;
+    border-radius: 4px;
+    border: 1px solid rgba(40, 38, 38, 0.71);
+    resize: none;
+    background-color: rgba(32, 32, 32, 0.86);
+    height: 60px;
+    width: 96%;
+    top: 7px;
+    margin: 0 2%;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px; }
+    .Chat__Input textarea:focus {
+      background-color: #212124;
+      outline: none !important;
+      border-color: rgba(61, 61, 61, 0.5);
+      box-shadow: 0 0 2px #719ECE; }
+  .Chat__Input .Chat__Input-Buttons {
+    position: absolute;
+    bottom: 7px;
+    right: 8px; }
+    .Chat__Input .Chat__Input-Buttons a {
+      position: relative;
+      cursor: pointer;
+      margin-right: 7px;
+      color: rgba(255, 255, 255, 0.7);
+      transition: all 0.2s; }
+      .Chat__Input .Chat__Input-Buttons a:hover {
+        color: rgba(255, 255, 255, 0.9); }
+    .Chat__Input .Chat__Input-Buttons button {
+      border-radius: 3px;
+      color: #ffffff;
+      background: #d9585b;
+      font-size: 10px;
+      padding: 6px 5px 7px;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+      text-shadow: none !important;
+      border: none !important;
+      box-shadow: none !important;
+      transition: all 0.2s; }
+      .Chat__Input .Chat__Input-Buttons button:hover {
+        border-radius: 4px;
+        background: #da686a; }
+      .Chat__Input .Chat__Input-Buttons button:focus {
+        border: none !important;
+        text-shadow: none !important;
+        box-shadow: none !important; }
+  .Chat__Input .Chat__Input-Anon {
+    color: #eee;
+    font: 'Roboto';
+    font-size: 11px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    margin: 0 auto;
+    text-align: center; }
+    .Chat__Input .Chat__Input-Anon a {
+      text-decoration: none;
+      color: #eee;
+      transition: 0.2s ease; }
+      .Chat__Input .Chat__Input-Anon a:hover, .Chat__Input .Chat__Input-Anon a:focus {
+        text-decoration: none;
+        color: #e2dede; }

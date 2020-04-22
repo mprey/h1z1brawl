@@ -1,0 +1,190 @@
+$speed: "0.25s";
+$transition: all #{$speed} cubic-bezier(0.310, -0.105, 0.430, 1.400);
+
+.Modal__CoinflipOffers {
+  width: 700px;
+  height: 400px;
+}
+
+.Modal__CoinflipOffers-Content {
+  position: relative;
+  color: #828283;
+
+  .OffersTable {
+    height: 330px;
+    overflow-y: scroll;
+  }
+
+  table {
+    text-align: center;
+    width: 100%;
+    //background-color: rgb(60, 60, 60);
+
+    tr.OfferRow {
+      border-bottom: .5px solid #494949;
+      background-color: rgba(50, 49, 49, 0.85);
+    }
+
+    th {
+      position: relative;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 11px;
+      color: #b6b3b3;
+
+      span {
+        padding-bottom: 2px;
+        border-bottom: 1px solid rgba(34, 34, 34, 0.75);
+      }
+    }
+
+    .Status p {
+      color: inherit;
+      font-size: 9px;
+      text-transform: uppercase;
+
+      &.Failed {
+        color: rgb(190, 73, 73);
+      }
+
+      &.Completed {
+        color: green;
+      }
+
+      span {
+        background-color: rgb(61, 61, 61);
+        padding: 3px;
+        border-radius: 3px;
+      }
+
+    }
+
+    .OfferRow {
+      height: 50px;
+    }
+
+    .Cancel {
+      color: red;
+
+      i.disabled {
+        opacity: 0.2;
+        cursor: default;
+      }
+
+      i:not(.disabled) {
+        cursor: pointer;
+      }
+    }
+
+    .Link {
+      text-align: center;
+      a {
+        display: block;
+        border-radius: 0;
+        background: none;
+        width: auto;
+        height: auto;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        border: none;
+        line-height: normal;
+      }
+      i {
+        cursor: pointer;
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+  }
+
+  .OffersLoading {
+    position: absolute;
+    left: 0; right: 0;
+    margin: 0 auto;
+    top: 150px;
+  }
+
+  .Note {
+    text-align: left;
+    position: relative;
+    width: 100%;
+    border-bottom: .5px solid #494949;
+
+    p {
+      font-size: 11px;
+      padding: 0px; margin: 0px;
+      padding-left: 10px;
+      padding-top: 1px;
+      padding-bottom: 5px;
+    }
+
+    a {
+      display: block;
+      position: absolute;
+      background: rgb(102, 102, 102);
+      width: 100px;
+      height: 25px;
+      line-height: 25px;
+      color: #eee;
+      overflow: hidden;
+      cursor: pointer;
+      border-radius: 5px;
+      box-shadow: 0 0 20px 0 rgba(0,0,0,.3);
+      transition: $transition;
+      top: 50%; right: 10px;
+      transform: translateY(-50%);
+
+      div,
+      span {
+        display: block;
+        height: 100%;
+        text-align: center;
+        position: absolute;
+        top: 0;
+      }
+
+      span {
+        width: 72%;
+        line-height: inherit;
+        font-size: 10px;
+        text-transform: uppercase;
+        left: 0;
+        transition: $transition;
+
+        &:after {
+          content: '';
+          background-color: rgba(79, 79, 79, 0.9);
+          width: 2px;
+          height: 70%;
+          position: absolute;
+          top: 15%;
+          right: -1px;
+        }
+      }
+
+      div {
+        width: 28%;
+        right: 0;
+        transition: $transition;
+
+        .fa {
+          font-size: 13px;
+          transition: $transition, height #{$speed} ease;
+          position: absolute;
+          top: 50%; left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      &:hover {
+        opacity: 0.9;
+      }
+
+      &:active {
+        opacity: 1;
+      }
+    }
+  }
+}

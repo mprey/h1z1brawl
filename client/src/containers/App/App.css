@@ -1,0 +1,75 @@
+main {
+  padding-top: 65px; }
+
+.ui.dimmer {
+  background-color: rgba(54, 54, 54, 0.49) !important; }
+
+.App__Loading {
+  background-color: #202020;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  color: #eee;
+  z-index: 5;
+  text-align: center; }
+  .App__Loading img {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%; }
+
+.modal {
+  bottom: auto !important; }
+
+.App__Background {
+  z-index: -1; }
+  .App__Background .App__Background-Wrapper {
+    z-index: -1;
+    background-color: rgba(32, 32, 32, 0.8);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto; }
+  .App__Background img {
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto; }
+
+/*
+ * react-circular-progressbar styles
+ *
+ * All of the styles in this file are optional and configurable!
+ */
+.CircularProgressbar {
+  height: 300px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto; }
+
+.CircularProgressbar .CircularProgressbar-path {
+  stroke: #a13131;
+  stroke-linecape: butt;
+  transition: stroke-dashoffset 0.5s ease 0s; }
+
+.CircularProgressbar .CircularProgressbar-trail {
+  stroke: rgba(0, 0, 0, 0.2); }
+
+.CircularProgressbar .CircularProgressbar-text {
+  display: none; }

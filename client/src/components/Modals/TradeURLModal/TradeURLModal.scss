@@ -1,0 +1,160 @@
+.ReactModalPortal > div {
+  opacity: 0;
+}
+
+.ReactModalPortal .ReactModal__Overlay {
+  z-index: 4;
+  transition: opacity 200ms ease-in-out;
+
+  &--after-open {
+    opacity: 1;
+  }
+  &--before-close {
+      opacity: 0;
+  }
+}
+
+
+.Modal__Overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.35);
+  text-align: center;
+  overflow-y: scroll;
+}
+
+.Modal {
+  box-shadow: 0px 0px 10px black;
+  position: absolute;
+  top: 100px; left: 0; right: 0;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  height: 270px;
+  width: 500px;
+  overflow: hidden;
+  border-radius: 8px;
+  outline: none;
+}
+
+.Modal__Header {
+  position: relative;
+  background: rgb(42, 42, 42);
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid rgb(34, 34, 34);
+
+  a {
+    cursor: pointer;
+    position: absolute;
+    top: 50%; right: 15px;
+    transform: translateY(-50%);
+    color: #eee;
+    transition: 0.2s all ease-in;
+
+    &:hover {
+      color: #c9c8c8;
+    }
+  }
+
+  h1 {
+    padding: 0;
+    margin: 0;
+    color: rgb(177, 56, 56);
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+}
+
+
+.Modal__Content {
+  background: rgba(48, 48, 48, 1);
+  min-height: 300px;
+  height: auto;
+
+  hr {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #4f4f4f;
+    height: 1px;
+    border: none;
+  }
+
+  a {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+    height: 40px;
+    line-height: 30px;
+    background: rgb(186, 41, 41);
+    border: 0.7px solid #4f4f4f;
+    text-decoration: none !important;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 5px 8px;
+    border-radius: 5px;
+    box-sizing: 0px 0px 1px black;
+    background: rgb(137, 230, 137);
+    color: #eee;
+    transition: 0.2s all ease-in;
+
+    &:hover {
+      opacity: 0.7;
+      color: #eee;
+    }
+
+    &:visited {
+      color: #eee;
+    }
+  }
+}
+
+.Modal__TradeURL-Input {
+  width: 70%;
+
+  input {
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    border-right: none !important;
+
+    &:focus {
+      border: 1px solid rgb(61, 61, 61) !important;
+    }
+  }
+}
+
+.Modal__TradeURL-Content {
+  p {
+    padding: 10px;
+    color: #8b8b8b;
+  }
+
+  a {
+    background-color: rgb(223, 88, 88);
+    border: none;
+    box-shadow: 0px 0px 3px black;
+  }
+}
+
+.Modal__TradeURL-Save {
+  display: inline-block;
+  font-size: 1em;
+  padding: 8px 2em;
+  padding-bottom: 9.46px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: rgb(223, 88, 88);
+  color: #eee;
+  border: 1px solid rgba(34,36,38,.15);
+  cursor: pointer;
+  transition: 0.2s all;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}

@@ -1,0 +1,12 @@
+.Stat__Title {
+  text-transform: uppercase;
+  color: #c8354e;
+  font-family: "Roboto";
+  font-size: 20px; }
+
+.Stat__Data {
+  color: #b5b5b5;
+  font-size: 32px;
+  margin: 0; }
+  .Stat__Data i {
+    font-size: 35px; }

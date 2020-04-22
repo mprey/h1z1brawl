@@ -1,0 +1,240 @@
+.Modal__Footer {
+  height: 40px;
+  position: absolute;
+  bottom: 0;
+  line-height: 35px;
+  right: 0; left: 0;
+  margin: 0 auto;
+  background: rgb(42, 42, 42);
+  border-top: 1px solid rgb(34, 34, 34);
+
+  p {
+    display: inline-block;
+    color: #8b8b8b;
+    font-size: 12px !important;
+
+    span {
+      background: rgb(20, 20, 20);
+      padding: 2px;
+      border-radius: 3px;
+      font-size: 9px;
+    }
+  }
+}
+
+.Modal__WatchCoinflip {
+  //top: 50px;
+  height: auto;
+  width: 600px;
+
+  .loser > * {
+    opacity: 0.3;
+  }
+
+  .winner .User {
+    box-shadow: 0px 0px 4px black;
+  }
+
+  .UserDisplay {
+    transition: 0.3s all ease-in;
+  }
+
+  .Winner {
+    margin-left: 269px !important;
+    position: relative;
+
+    img {
+      width: 60px;
+      height: 60px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    p {
+      font-size: 11px;
+      position: absolute;
+      top: 85px;
+      left: -28px;
+
+      &.Secret {
+        top: 105px;
+        left: -15px;
+      }
+    }
+
+    span {
+      font-size: 9px;
+    }
+  }
+
+  .FlipContainer {
+
+    .Flip {
+      margin-left: 269px !important;
+      animation-name: wanimShow;
+      animation-iteration-count: 1;
+      animation-timing-function: ease-out;
+      animation-duration: 4s;
+      transform-style: preserve-3d;
+    }
+
+    .red {
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      width: 60px;
+      height: 60px;
+      background-image: url(../../../static/coin-tails.png);
+      backface-visibility: hidden;
+      background-size: contain;
+
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 60px;
+        height: 60px;
+        background-image: url(../../../static/coin-heads.png);
+        transform: rotateX(180deg);
+        backface-visibility: hidden;
+        background-size: contain;
+      }
+    }
+
+    .black {
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      width: 60px;
+      height: 60px;
+      background-image: url(../../../static/coin-heads.png);
+      backface-visibility: hidden;
+      background-size: contain;
+
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 60px;
+        height: 60px;
+        background-image: url(../../../static/coin-tails.png);
+        background-size: contain;
+        transform: rotateX(180deg);
+        backface-visibility: hidden;
+      }
+    }
+  }
+
+  .Modal__Content {
+    position: relative;
+
+    .Status {
+      margin-top: 30px;
+      position: absolute;
+      left: 0; right: 0;
+
+      div {
+        margin-left: 280px;
+      }
+    }
+  }
+
+  .User {
+    height: 70px;
+    width: 70px;
+    border-radius: 3px;
+    margin-top: 20px;
+  }
+
+  .Side {
+    height: 20px;
+    width: 20px;
+    top: 10px;
+    right: 112px;
+    position: absolute;
+  }
+
+  p {
+    color: rgb(161, 161, 161);
+    font-size: 17px;
+  }
+
+  span {
+    background: rgb(31, 31, 31);
+    padding: 2px;
+    border-radius: 3px;
+    color: #eee;
+    font-size: 11px;
+  }
+
+  .Waiting {
+    height: 30px;
+    border-radius: 5px;
+    background: rgba(#131313, 0.5);
+    text-align: center;
+    line-height: 30px;
+    color: #ccc8c8;
+    margin: 10px;
+  }
+
+  .Items {
+    text-align: left;
+    width: auto;
+    margin: 10px;
+    border-radius: 5px;
+    background: rgba(#131313, 0.5);
+    margin-bottom: 50px;
+
+    .Center {
+      text-align: center;
+      padding: 5px 0px;
+      color: #ccc8c8;
+    }
+
+    .Item:not(:last-child) {
+      border-bottom: 1px solid rgb(71, 71, 71);
+    }
+
+    .Item:not(:first-child) {
+      height: 80px;
+    }
+
+    .Item {
+      margin: 0px 5px;
+      padding: 8px 0px;
+
+      img {
+        float: left;
+        height: 65px;
+        width: 65px;
+        margin-right: 10px;
+      }
+
+      p {
+        font-size: 13px;
+        margin: 0;
+      }
+
+      span {
+        font-size: 9px;
+      }
+    }
+  }
+}
+
+@keyframes wanimShow {
+  0% {
+    transform: scale(0.1) rotateX(1440deg);
+  }
+  75% {
+    transform: scale(1.5) rotateX(0);
+  }
+  100% {
+    transform: scale(1) rotateX(0);
+  }
+}
