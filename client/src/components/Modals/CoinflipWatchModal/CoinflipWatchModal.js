@@ -52,7 +52,12 @@ export default class CoinflipWatchModal extends Component {
       this.forceUpdate()
     }, 6000)
     return (
-      <div className="FlipContainer"><div className={`Flip ${winningSide}`}></div></div>
+      <div className="FlipContainer nomargin">
+        <div className="Flipper nomargin">
+          <div className={`Front ${winningSide} nomargin`}></div>
+          <div className={`Back ${winningSide === 'black' ? 'red' : 'black'} nomargin`}></div>
+        </div>
+      </div>
     )
   }
 

@@ -94,5 +94,5 @@ export function hasBrawlInName(user) {
   if (!user || !user.name) {
     return false
   }
-  return user.name.toLowerCase().indexOf('h1z1brawl.com') !== -1
+  return user.name.toLowerCase().indexOf(config.metadata.url) !== -1
 }

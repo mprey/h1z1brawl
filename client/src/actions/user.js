@@ -59,12 +59,9 @@ export function forceRefreshInventory() {
     type: config.socket.secure.param,
     types: [FORCE_REQUEST_INVENTORY, REQUEST_INVENTORY_SUCCESS, REQUEST_INVENTORY_FAILURE],
     promise: (socket) => socket.emit('FORCE_REQUEST_INVENTORY')
-      .catch(err => {
-        if (err.ttl) {
-          NotificationManager.error(err.ttl)
-          throw null
-        }
-        throw err
+      .catch(error => {
+        NotificationManager.error(error)
+        throw error
       })
   }
 }

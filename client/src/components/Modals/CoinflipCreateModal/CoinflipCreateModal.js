@@ -161,7 +161,7 @@ export default class CoinflipCreateModal extends Component {
     } else if (error) {
       return (
         <div className="Modal__CreateCoinflip-Error">
-          <span>You do not have any tradeable H1Z1:KotK items or Steam is offline.</span>
+          <span>An error ocurred loading your inventory. You may not have any tradeable { config.metadata.gameName } items or Steam is offline.</span>
         </div>
       )
     }

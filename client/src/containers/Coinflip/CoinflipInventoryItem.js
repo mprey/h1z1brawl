@@ -19,7 +19,7 @@ export default class CoinflipInventoryItem extends Component {
   onItemClick() {
     if (!this.props.disabled && !this.props.selected) {
       this.props.select()
-    } else if (!this.props.dsiabled && this.props.selected) {
+    } else if (!this.props.disabled && this.props.selected) {
       this.props.unselect()
     }
   }

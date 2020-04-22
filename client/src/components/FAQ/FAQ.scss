@@ -1,15 +1,11 @@
-.ComingSoon {
-  position: absolute;
-  left: 50%; top: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(18, 18, 18, 0.79);
-  box-shadow: 0px 0px 3px black;
-  border-radius: 5px;
+$background: rgba(22, 22, 22, 0.8);
 
-  p {
-    color: #eee;
-    padding: 25px 30px;
-    font-size: 11px;
-    text-transform: uppercase;
-  }
+.FAQ {
+  margin: 30px 0;
+  background: $background;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+  position: relative;
+  padding: 15px 5px;
+  color: #adadad;
 }

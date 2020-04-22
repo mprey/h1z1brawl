@@ -79,7 +79,7 @@ function hasBrawlInName(string) {
   if (!string) {
     return false
   }
-  return string.toLowerCase().indexOf('h1z1brawl.com') !== -1
+  return string.toLowerCase().indexOf(config.metadata.url) !== -1
 }
 
 function getDepositTotal(deposit) {

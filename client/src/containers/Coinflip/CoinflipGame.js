@@ -10,7 +10,7 @@ import noUser from '../../static/no-user.jpg'
 const IMAGE_URL = 'https://steamcommunity-a.akamaihd.net/economy/image/'
 
 const WAITING_COUNTDOWN = 120
-const COMPLETION_COUNTDOWN = 15
+const COMPLETION_COUNTDOWN = 10
 
 export default class CoinflipGame extends Component {
 

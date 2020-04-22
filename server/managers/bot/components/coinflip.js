@@ -1,6 +1,7 @@
 import { Promise as bluebird } from 'bluebird'
 import { default as Bot } from '../bot'
 import { coinflip } from '../../'
+import config from '../../../../config'
 
 Bot.prototype.handleCoinflipFailed = function(offer, reason) {
   /* all coinflip logic should be handled in the coinflip manager */
@@ -31,15 +32,12 @@ Bot.prototype.sendCoinflipRequest = function(coinflipOffer) {
 
       /* attach appid and contextid to all the items */
       const userItems = this.formatItems(coinflipOffer.userItems)
-      const botItems = this.formatItems(coinflipOffer.botItems)
 
-      steamOffer.setMessage(`Trade offer sent from H1Z1Brawl coinflip. Your trade ID: ${coinflipOffer._id}`)
+      steamOffer.setMessage(`Trade offer sent from ${config.metadata.name} coinflip. Your trade ID: ${coinflipOffer._id}`)
       steamOffer.addTheirItems(userItems)
-      steamOffer.addMyItems(botItems)
 
-      /* return a promise to send the trade offer through steam */
-      return sendAsync()
-    }).then(status => {
+      return this.addMyItems(coinflipOffer.botItems, steamOffer)
+    }).then(() => sendAsync()).then(status => {
       if (status === 'pending' && coinflipOffer.botItems.length === 0) {
         steamOffer.cancel()
         return reject(new Error('Trade went to escrow'))

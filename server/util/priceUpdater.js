@@ -9,23 +9,24 @@ export default function connect(interval) {
 }
 
 function updatePrices() {
-  const opts = {
-    uri: API_ENDPOINT,
-    json: true
-  }
-  request(opts)
-    .then(json => {
-      for (const key in json) {
-        const price = getItemPrice(json[key])
-        Price.updatePrice(key, price)
-      }
-    })
-    .then(xd => {
-      console.log('Updated prices')
-    })
-    .catch(err => {
-      console.log(`Error while updating prices: ${err}`)
-    })
+  // const opts = {
+  //   uri: API_ENDPOINT,
+  //   json: true
+  // }
+  // request(opts)
+  //   .then(json => {
+  //     for (const key in json) {
+  //       const price = getItemPrice(json[key])
+  //       Price.updatePrice(key, price)
+  //     }
+  //   })
+  //   .then(xd => {
+  //     console.log('Updated prices')
+  //   })
+  //   .catch(err => {
+  //     console.log(`Error while updating prices: ${err}`)
+  //   })
+  console.log("Ignoring prices");
 }
 
 function getItemPrice(object) {

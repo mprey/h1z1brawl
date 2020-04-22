@@ -12,6 +12,7 @@ import JackpotRoller from './JackpotRoller'
 import CircularProgressbar from 'react-circular-progressbar';
 import { getWinnerChance, getJackpotTotal, getJackpotStats, getTotalJackpotItems, getSortedItems } from '../../util/jackpot'
 import { startJackpotRolling, loadJackpot, endJackpotRolling, endJackpotRound, newJackpotRound, updateJackpotRound, requestInventory, forceRefreshInventory, depositJackpotItems } from '../../actions'
+import config from '../../../../config'
 
 import './Jackpot.css'
 
@@ -121,7 +122,7 @@ class Jackpot extends Component {
               trigger={
                 <div className="Header__Item">
                   <img src={`${IMAGE_URL}${item.icon_url}`} alt="item" />
-                  <p>${item.price}</p>
+                  <p>${Number(item.price).toFixed(2)}</p>
                 </div>
               }
               offset={-20}
@@ -198,7 +199,7 @@ class Jackpot extends Component {
 
   render() {
     const [jackpotTotal, currentPlayers, numDeposited, chanceToWin, items] = this.getStats()
-    document.title = `${jackpotTotal} - H1Z1Brawl`
+    document.title = `${jackpotTotal} - ` + config.metadata.name
     return (
       <Grid className="Jackpot">
         <TradeOfferModal
@@ -224,7 +225,7 @@ class Jackpot extends Component {
               { this.renderJackpotDisplay(jackpotTotal, items) }
             </Col>
             <Col className="Ad" sm={12}>
-              <p>Put <span>H1Z1Brawl.com</span> in your name and get <span>5%</span> more items!</p>
+              <p>Add <span>{ config.metadata.url }</span> to your name and enjoy <span>{Number((config.tax.noPromo - config.tax.promo) / config.tax.noPromo * 100).toFixed(0)}%</span> less comission on each keypot!</p>
             </Col>
             <Col sm={6} className="NoLeft">
               <div className="JackpotStat">

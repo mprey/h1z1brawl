@@ -39,7 +39,7 @@ class Message extends Component {
       </div>
     )
 
-    if (viewer.rank >= 2) {
+    if (viewer && viewer.rank >= 2) {
       return (
           <Popup trigger={messageObject} inverted on='click'>
             <Popup.Header>User Actions</Popup.Header>

@@ -1,6 +1,6 @@
 import { User, RakeItem } from '../../../db'
 import { loadInventory, forceRefreshInventory } from '../../../actions'
-import { bot as botManager } from '../../../managers'
+import { rake } from '../../../managers'
 
 export default function configure(socket, io) {
 
@@ -18,16 +18,7 @@ export default function configure(socket, io) {
       if (user.rank < 2) {
         return callback({ error: 'You do not have permission.' })
       }
-      RakeItem.findById(rakeItem._id).then(item => {
-        const bot = botManager.getBot(item.botId)
-        if (!bot || !bot.enabled) {
-          return callback({ error: 'Bot with the items is currently offline. Consult a developer.' })
-        }
-        bot.sendRakeRequest(user, rakeItem).then(data => {
-          item.setWithdrawn()
-          callback()
-        }).catch(error => callback({ error: error.message }))
-      }).catch(error => callback({ error: error.message }))
+      rake.withdrawRake(user, rakeItem).then(callback).catch(error => callback({ error: error.message }));
     })
   })
 
@@ -36,26 +27,7 @@ export default function configure(socket, io) {
       if (user.rank < 2) {
         return callback({ error: 'You do not have permission.' })
       }
-      RakeItem.getAllUnclaimedRake().then(rakeData => {
-        const botRequests = {}
-        for (const index in rakeData) {
-          const rakeItem = rakeData[index]
-          if (botRequests[rakeItem.botId]) {
-            botRequests[rakeItem.botId].items.push(rakeItem.toObject())
-            rakeItem.setWithdrawn()
-          } else {
-            const bot = botManager.getBot(rakeItem.botId)
-            if (bot && bot.enabled) {
-              botRequests[bot.getSteamID64()] = { bot: bot, items: [rakeItem] }
-            }
-          }
-        }
-        for (const botIndex in botRequests) {
-          const { bot, items } = botRequests[botIndex]
-          bot.sendRakesRequest(user, items)
-        }
-        callback()
-      }).catch(error => callback({ error: error.message }))
+      rake.withdrawAllRake(user).then(callback).catch(error => callback({ error: error.message }));
     })
   })
 

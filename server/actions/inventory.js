@@ -5,8 +5,20 @@ import SteamCommunity from 'steamcommunity'
 
 bluebird.promisifyAll(SteamCommunity.prototype)
 
-const APP_ID = 433850
 const community = new SteamCommunity()
+
+export function removeCache(userId) {
+  const endpoint = `${userId}/${config.inventory.endpoints.default}`
+  return new Promise((resolve, reject) => {
+    client.del(endpoint, (err) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve();
+      }
+    });
+  })
+}
 
 export function loadInventory(userId) {
   const endpoint = `${userId}/${config.inventory.endpoints.default}`
@@ -29,7 +41,7 @@ export function loadInventory(userId) {
 
 export function queryInventory(userId) {
   return new Promise((resolve, reject) => {
-    community.getUserInventoryContentsAsync(userId, APP_ID, 1, true)
+    community.getUserInventoryContentsAsync(userId, config.metadata.gameId, config.metadata.contextId, true)
       .then(Price.formatPrices)
       .then(resolve)
       .catch(reject)
@@ -51,11 +63,7 @@ export function forceRefreshInventory(userId) {
             })
             .catch(reject)
         }
-        client.ttlAsync(forceEndpoint).then(ttl => {
-          return reject({
-            ttl: `You must wait ${formatSeconds(ttl)} before reloading your inventory`
-          })
-        })
+        client.ttlAsync(forceEndpoint).then(ttl => reject(new Error(`You must wait ${formatSeconds(ttl)} before reloading your inventory`)))
       })
       .catch(reject)
   })

@@ -5,6 +5,7 @@ import { getOfferTotal, getTotalWinnings } from '../../util/jackpot'
 import { findSocketById } from '../../util/socket'
 import { jackpotOffer as jackpotOfferType } from '../../constants'
 import config from '../../../config'
+import { removeCache } from '../../actions'
 
 class JackpotManager {
 
@@ -82,7 +83,7 @@ class JackpotManager {
     })
   }
 
-  handleAcceptedTrade(offer, reason) {
+  handleAcceptedTrade(offer) {
     JackpotOffer.findByTradeOffer(offer).then(jackpotOffer => {
       if (jackpotOffer.type === jackpotOfferType.DEPOSIT) {
         jackpotOffer.setAccepted()
@@ -90,6 +91,7 @@ class JackpotManager {
       } else if (jackpotOffer.type === jackpotOfferType.WINNINGS) {
         jackpotOffer.setAccepted()
       }
+      removeCache(jackpotOffer.userId)
     }).catch(error => {
       this.log(`error finding a jackpot offer: ${error.message}`)
     })
@@ -101,6 +103,7 @@ class JackpotManager {
       jackpotOffer.setRoundId(round._id)
       this.publicIo.emit('JACKPOT_UPDATE_ROUND', round.toCleanObject())
       this.updateCurrentRound(round)
+      removeCache(jackpotOffer.userId)
     }).catch(error => {
       this.log(`error adding a deposit to the round: ${error.message}`)
     })
@@ -108,7 +111,7 @@ class JackpotManager {
 
   updateCurrentRound(currentRound) {
     this.currentRound = currentRound
-    if (this.currentRound.deposits.length > 1 && !this.hasTimerStarted) {
+    if (this.currentRound.deposits.length >= config.jackpot.game.depositsToStart && !this.hasTimerStarted) {
       this.hasTimerStarted = true
       this.log('starting the timer for the current jackpot round')
       this.currentRound.setTimerStarted().then(currentRound => {
@@ -128,7 +131,6 @@ class JackpotManager {
       this.sendGameWinnings(round.toObject())
       this.createNewRound()
     }).catch(error => {
-      console.log(error)
       this.log(`error calculating the winner on jackpot: ${error.message}`)
     })
   }

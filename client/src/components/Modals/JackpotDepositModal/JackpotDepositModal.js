@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import Modal from 'react-modal'
 import { CoinflipInventoryItem } from '../../../containers'
 import { NotificationManager } from 'react-notifications'
-import { jackpot } from '../../../../../config'
+import config from '../../../../../config'
 
 import './JackpotDepositModal.css'
 
 const IMAGE_URL = 'https://steamcommunity-a.akamaihd.net/economy/image/'
-const { minItems, maxItems, minAmount, itemThreshold } = jackpot
+const { minItems, maxItems, minAmount, itemThreshold } = config.jackpot
 
 export default class JackpotDepositModal extends Component {
 
@@ -53,7 +53,7 @@ export default class JackpotDepositModal extends Component {
     } else if (error) {
       return (
         <div className="Modal__CreateCoinflip-Error">
-          <span>You do not have any tradeable H1Z1:KotK items or Steam is offline.</span>
+          <span>An error ocurred loading your inventory. You may not have any tradeable { config.metadata.gameName } items or Steam is offline.</span>
         </div>
       )
     }
@@ -64,7 +64,7 @@ export default class JackpotDepositModal extends Component {
         image={`${IMAGE_URL}${item.icon_url}`}
         selected={this.isSelected(key)}
         price={item.price} key={key}
-        disabled={item.price < itemThreshold}
+        disabled={(item.price < itemThreshold) || (!config.jackpot.allowedItems.includes("*") && !config.jackpot.allowedItems.includes(item.name))}
         unselect={() => this.unselectItem(key)}
         select={() => this.selectItem(key)}
       />

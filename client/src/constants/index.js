@@ -9,6 +9,7 @@ export * from './user'
 export * from './jackpot'
 export * from './history'
 export * from './admin'
+export * from './bot'
 
 export const ranks = {
   NORMAL: 0,

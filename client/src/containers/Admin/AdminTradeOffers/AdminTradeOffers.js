@@ -3,6 +3,7 @@ import { Tab, Input, Header, Icon, Dropdown } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import AdminTradesTable from './AdminTradesTable'
+import config from '../../../../../config'
 
 import {
   loadCoinflipOffers,
@@ -70,7 +71,7 @@ class AdminTradeOffers extends Component {
   }
 
   componentWillMount() {
-    document.title = 'Admin - H1Z1Brawl'
+    document.title = 'Admin - ' + config.metadata.name
   }
 
   updateJackpotSearch(event) {

@@ -41,6 +41,8 @@ function checkItemArray(items) {
       return false
     } else if (item.price < itemThreshold) {
       return false
+    } else if (!jackpot.allowedItems.includes("*") && !jackpot.allowedItems.includes(item.name)) {
+      return false
     }
   }
   return true;

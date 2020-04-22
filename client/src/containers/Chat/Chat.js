@@ -2,17 +2,16 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import ReactDOM from 'react-dom'
 import { connect } from 'react-redux'
-import { LinkContainer } from 'react-router-bootstrap'
 import { NotificationManager } from 'react-notifications'
 import FontAwesome from 'react-fontawesome'
 import { Popup } from 'semantic-ui-react'
 import { Message } from '../../components'
-import { sendChat, receiveChat, loadChat, deleteMessage, banUser, muteUser, removeChat } from '../../actions/'
+import { sendChat, receiveChat, loadChat, deleteMessage, banUser, muteUser, removeChat, addBot, removeBot } from '../../actions/'
 import { api } from '../../../../config'
 import { futureDateFromText, getCommandProperties } from '../../util/chat'
-import giveaway from '../../static/giveaway.png'
 import logo from '../../static/logo.png'
 import moment from 'moment'
+import config from '../../../../config'
 
 import FourHead from '../../static/emotes/4Head.png'
 import ANELE from '../../static/emotes/ANELE.png'
@@ -38,9 +37,9 @@ import WutFace from '../../static/emotes/WutFace.png'
 import './Chat.css'
 
 const messages = [
-  'If you experience any bugs/problems, contact h1z1brawl@gmail.com for help.',
-  'Add H1Z1Brawl.com to your name and receive 5% less tax.',
-  'Join our giveaway by clicking on the banner above the chat box.'
+  `If you experience any bugs/problems, contact ${config.metadata.email} for help.`,
+  `Add ${config.metadata.url} to your name and receive 20% less tax.`,
+  'Dont forget to join our discord server for support and giveaways info: ' + config.metadata.discord
 ]
 
 const emotes = {'4Head': FourHead, 'ANELE': ANELE, 'BabyRage': BabyRage, 'BibleThump': BibleThump, 'BrokeBack': BrokeBack, 'cmonBruh': cmonBruh, 'CoolCat': CoolCat, 'CorgiDerp': CorgiDerp,
@@ -142,7 +141,7 @@ class Chat extends Component {
       user: {
         level: 999,
         image: logo,
-        name: 'H1Z1Brawl Bot'
+        name: config.metadata.name + ' Bot'
       },
       message
     })
@@ -219,6 +218,23 @@ class Chat extends Component {
       }
       this.clearChat()
       return this.props.muteUser(userId, reason, duration)
+    } else if (message.indexOf('/addbot') === 0) {
+      const parts = message.split(" ")
+      // /addbot name password shared identity
+      if (parts.length !== 5) {
+        return this.sendBotMessage("Add bot format: /addbot <username> <password> <shared secret> <identity secret>")
+      }
+      const [, accountName, password, sharedSecret, identitySecret] = parts
+      this.clearChat()
+      return this.props.addBot(accountName, password, sharedSecret, identitySecret)
+    } else if (message.indexOf('/removebot') === 0) {
+      const parts = message.split(" ")
+      if (parts.length !== 2) {
+        return this.sendBotMessage("Remove bot format: /removebot <username>")
+      }
+      const [, accountName] = parts
+      this.clearChat()
+      return this.props.removeBot(accountName)
     }
 
     this.props.sendChat(message)
@@ -253,11 +269,11 @@ class Chat extends Component {
           <FontAwesome name={iconClass} onClick={this.handleClick} />
         </div>
         <div className={`Chat ${chatClass}`}>
-          <div className="Chat__Advertisement">
+          {/* <div className="Chat__Advertisement">
             <LinkContainer activeClassName="" to="/giveaway">
               <img src={giveaway} alt="giveaway" />
             </LinkContainer>
-          </div>
+          </div> */}
           <div className="Chat__Header">
             <span className="Chat__Header-Wrapper">
               <FontAwesome name="users" className="Chat__Header-Icon" />
@@ -310,7 +326,9 @@ const mapDispatchToProps = (dispatch) => {
     removeChat,
     deleteMessage,
     banUser,
-    muteUser
+    muteUser,
+    addBot,
+    removeBot
   }, dispatch)
 }
 

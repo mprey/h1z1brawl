@@ -8,6 +8,7 @@ import { Header, TradeURLModal } from '../../components'
 import { Chat, Landing } from '../index'
 import Routes from '../../routes'
 import { isTradeURL } from '../../util/url'
+import config from '../../../../config'
 
 import './App.css'
 import 'react-notifications/lib/notifications.css';
@@ -104,7 +105,7 @@ class App extends Component {
             </div>
           ) : (
             <div>
-              {!user &&
+              {!user && config.metadata.useLanding && 
                 <Landing />
               }
               <Header user={user} onSettingsClick={() => this.setState({ tradeUrlModal: true })} />

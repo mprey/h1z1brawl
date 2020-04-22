@@ -1,20 +1,19 @@
-import bots from '../../../bots'
+import config from '../../../config'
 import { default as Bot } from './bot'
+import { Bot as BotModel } from '../../db/'
 
-const { accounts, settings } = bots
+const settings = config.bots
 
 class BotManager {
 
   constructor() {
     this.bots = []
     this.currentBotIndex = 0
-    this.loadBots()
-  }
+    this.loadBoat = this.loadBot.bind(this);
 
-  loadBots() {
-    for (const bot of Object.values(accounts)) {
-      this.loadBot({ ...bot, ...settings })
-    }
+    BotModel.getBots(bot => this.loadBot({ ...bot, ...settings }), (err) => {
+      console.log(`>> Error while loading bots: ${err}`);
+    });
   }
 
   loadBot(options) {

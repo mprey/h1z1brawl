@@ -28,7 +28,7 @@ export default class JackpotDeposit extends Component {
         trigger={
           <div className="Round__Item">
             <img src={`${IMAGE_URL}${item.icon_url}`} alt="item" />
-            <p>${item.price}</p>
+            <p>${Number(item.price).toFixed(2)}</p>
           </div>
         }
         inverted

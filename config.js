@@ -3,7 +3,7 @@ const auth = {
     apiKey: process.env.STEAM_API_KEY || '5EB306084E5CB78D76E3DDFBF03346A7'
   },
   jwt: {
-    secret: process.env.JWT_SECRET || 'derp derp derp'
+    secret: process.env.JWT_SECRET || 'candemor de jarl'
   }
 }
 
@@ -22,6 +22,18 @@ const database = {
   redis: process.env.REDIS_URL || ''
 }
 
+const metadata = {
+  name: 'H1Z1Brawl',
+  url: 'h1z1brawl.com',
+  email: 'support@h1z1brawl.com',
+  discord: 'https://discord.gg/GMbkhkv',
+  twitter: 'https://twitter.com/h1z1brawl',
+  useLanding: true,
+  gameId: 440,
+  contextId: 2,
+  gameName: 'H1Z1Brawl'
+}
+
 const coinflip = {
   minItems: 1,
   maxItems: 15,
@@ -32,25 +44,27 @@ const coinflip = {
 const jackpot = {
   minItems: 1,
   maxItems: 15,
-  minAmount: 0.25,
+  minAmount: 2,
   itemThreshold: 0.10,
   game: {
     maxItems: 60,
     depositsToStart: 2
   },
   countdowns: {
-    gameCountdown: 90
-  }
+    gameCountdown: 60 // 60 seconds
+  },
+  allowedItems: ['*'],
+  numberOfPastRounds: 5,
 }
 
 const tax = {
-  promo: 0.05,
+  promo: 0.08,
   noPromo: 0.10
 }
 
 const inventory = {
   cacheTimeout: 24 * 60 * 60, //1 day
-  reloadCooldown: 30, //2 minutes
+  reloadCooldown: 60,
   endpoints: {
     default: 'inventory',
     forceReload: 'inventory/force'
@@ -58,7 +72,8 @@ const inventory = {
 }
 
 const prices = {
-  updateInterval: 20 * 60 * 1000 //20 minutes
+  updateInterval: 14 * 24 * 60 * 60 * 1000, //1 day
+  apiKey: process.env.BACKPACK_API || '5d771aa2d3817203cc276b55',
 }
 
 const socket = {
@@ -72,6 +87,23 @@ const socket = {
   }
 }
 
+const bots = {
+  domain: 'h1z1brawl.com',
+  pollTime: 5 * 1000, /* 5 seconds */
+  cancelTime: 2 * 60 * 1000, /* 2 minutes */
+  confirmationTime: 15 * 1000, /* 15 seconds */
+}
+
+const rake = {
+  automatedRakeTime: 60 * 60 * 1000, /* 1 hour */
+  rakeAccount: process.env.RAKE_ACCOUNT || '76561198987351749',
+  automatedRakeEnabled: false,
+}
+
+const chat = {
+  minLevel: -1 
+}
+
 module.exports = { //not transpiled
   auth: auth,
   jackpot: jackpot,
@@ -82,5 +114,9 @@ module.exports = { //not transpiled
   coinflip: coinflip,
   socket: socket,
   inventory: inventory,
-  database: database
+  database: database,
+  metadata: metadata,
+  bots: bots,
+  rake: rake,
+  chat: chat,
 }

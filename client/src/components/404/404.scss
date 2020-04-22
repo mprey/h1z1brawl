@@ -1,0 +1,15 @@
+.NotFound {
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(18, 18, 18, 0.79);
+    box-shadow: 0px 0px 3px black;
+    border-radius: 5px;
+  
+    p {
+      color: #eee;
+      padding: 25px 30px;
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+  }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import FontAwesome from 'react-fontawesome'
 import { Row, Col } from 'react-bootstrap'
 import config from '../../../../config'
 
@@ -58,7 +57,7 @@ class Landing extends Component {
     return (
       <div className="Landing">
         <img src={logo} alt="Logo"/>
-        <h1>The number one gambling site<br />for H1Z1:KotK</h1>
+        <h1>The number one gambling site<br />for {config.metadata.gameName}</h1>
         <hr />
         <div className="Landing__Stats">
           <Row className="show-grid">
@@ -80,7 +79,7 @@ class Landing extends Component {
         </div>
         <hr />
         <a className="Landng__EnterButton" href={`${config.api.url}api/auth/steam`}>
-          <FontAwesome name='steam' />
+          <i className="fab fa-steam-square" />
           <p>Enter Now</p>
         </a>
         <div className="Landing__TOS">

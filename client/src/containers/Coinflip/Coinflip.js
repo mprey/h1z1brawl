@@ -8,6 +8,7 @@ import CountUp from 'react-countup'
 import { NotificationManager } from 'react-notifications'
 import { addCoinflipHistoryGame, setCoinFlipped, removeCoinflipGame, updateCoinflipGame, joinCoinflipGame, loadCoinflipGames, receiveCoinflipOffers, requestInventory, forceRefreshInventory, sendNotification, createCoinflipGame, addCoinflipGame, requestCoinflipOffers, cancelCoinflipOffer, resendCoinflipOffer } from '../../actions'
 import { CoinflipVerifyModal, CoinflipHistoryModal, CoinflipWatchModal, CoinflipJoinModal, CoinflipOffersModal, CoinflipCreateModal, TradeOfferModal } from '../../components'
+import config from '../../../../config'
 import './Coinflip.css'
 
 class Coinflip extends Component {
@@ -52,7 +53,7 @@ class Coinflip extends Component {
   }
 
   componentWillMount() {
-    document.title = "Coinflip - H1Z1Brawl"
+    document.title = "Coinflip - " + config.metadata.name
     this.props.loadCoinflipGames()
 
     this.props.secureSocket.on('COINFLIP_OFFER_ERROR', ({ error }) => {
@@ -280,7 +281,7 @@ class Coinflip extends Component {
           createGame={this.props.createCoinflipGame}
         />
         <div className="Coinflip__Info">
-          <p>Add <span>H1Z1Brawl.com</span> in your name and enjoy <span>5%</span> less comission on all coin flips!</p>
+          <p>Add <span>{ config.metadata.url }</span> to your name and enjoy <span>{ Number((config.tax.noPromo - config.tax.promo) / config.tax.noPromo * 100).toFixed(0) }%</span> less comission on all coin flips!</p>
         </div>
         <div className="Coinflip__Header">
           <Row>

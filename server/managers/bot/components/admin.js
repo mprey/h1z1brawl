@@ -1,5 +1,6 @@
 import { default as Bot } from '../bot'
 import { Promise as bluebird } from 'bluebird'
+import config from '../../../../config'
 
 Bot.prototype.sendRakesRequest = function(user, rakeItems) {
   return new Promise((resolve, reject) => {
@@ -21,15 +22,10 @@ Bot.prototype.sendRakesRequest = function(user, rakeItems) {
         return reject(new Error('Your account must be Steam Guard Authenticated'))
       }
 
-      /* attach appid and contextid to all the items */
-      const botItems = this.formatItems(rakeItems)
-
-      steamOffer.setMessage(`Rake trade offer sent from H1Z1Brawl.`)
-      steamOffer.addMyItems(botItems)
-
-      /* return a promise to send the trade offer through steam */
-      return sendAsync()
-    }).then(status => {
+      steamOffer.setMessage(`Rake trade offer sent from ${config.metadata.name}.`)
+      
+      return this.addMyItems(rakeItems, steamOffer)
+    }).then(() => sendAsync()).then(status => {
       resolve(steamOffer) /* resolve the trade offer back to the user */
 
       this.community.acceptConfirmationForObject(this.identitySecret, steamOffer.id, (err) => {
@@ -66,7 +62,7 @@ Bot.prototype.sendRakeRequest = function(user, rakeItem) {
       /* attach appid and contextid to all the items */
       const botItems = this.formatItems([rakeItem])
 
-      steamOffer.setMessage(`Rake trade offer sent from H1Z1Brawl.`)
+      steamOffer.setMessage(`Rake trade offer sent from ${config.metadata.name}.`)
       steamOffer.addMyItems(botItems)
 
       /* return a promise to send the trade offer through steam */

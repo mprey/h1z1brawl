@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import HistoryTableCoinflip from './HistoryTableCoinflip'
 import HistoryTableJackpot from './HistoryTableJackpot'
+import config from '../../../../config'
 
 import {
   historyLoadCoinflip,
@@ -59,7 +60,7 @@ class History extends Component {
   }
 
   componentWillMount() {
-    document.title = 'History - H1Z1Brawl'
+    document.title = 'History - ' + config.metadata.name
   }
 
   onDropdownChange(game, data) {

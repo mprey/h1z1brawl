@@ -72,7 +72,7 @@ $bgColor: rgba(22, 22, 22, 1.0);
 
 .Chat__Header {
   position: absolute;
-  top: 75px; left: 0; right: 0;
+  top: 0; left: 0; right: 0;
   margin: 0 auto;
   height: 30px;
   border-bottom: 1px solid rgb(208, 73, 73);
@@ -97,7 +97,7 @@ $bgColor: rgba(22, 22, 22, 1.0);
   bottom: 100px;
   left: 0; right: 0;
   margin: 0 auto;
-  height: calc(100% - 205px);
+  height: calc(100% - 135px);
 }
 
 .Chat__Input {

@@ -15,6 +15,7 @@ import { default as authRoute } from './routes/auth'
 import { connect as connectMongo } from './db'
 import { default as connectSecureIo } from './sockets/secure'
 import { default as connectPublicIo } from './sockets/public'
+import { rake as rakeManager } from './managers'
 
 const app = express()
 const server = http.Server(app)
@@ -61,3 +62,6 @@ server.listen(app.get('port'), () => {
 });
 
 updatePrices(config.prices.updateInterval) //update prices for the database! woot
+if (config.rake.automatedRakeEnabled) {
+  rakeManager.startRakeInterval()
+}

@@ -1,0 +1,6 @@
+export const ADD_BOT = Symbol('ADD_BOT')
+export const ADD_BOT_SUCCESS = Symbol('ADD_BOT_SUCCESS')
+export const ADD_BOT_FAILURE = Symbol('ADD_BOT_FAILURE')
+export const REMOVE_BOT = Symbol('REMOVE_BOT')
+export const REMOVE_BOT_SUCCESS = Symbol('REMOVE_BOT_SUCCESS')
+export const REMOVE_BOT_FAILURE = Symbol('REMOVE_BOT_FAILURE')

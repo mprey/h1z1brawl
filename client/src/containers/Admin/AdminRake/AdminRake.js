@@ -3,6 +3,7 @@ import { Tab, Input, Header, Icon, Dropdown, Button } from 'semantic-ui-react'
 import AdminRakeTable from './AdminRakeTable'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import config from '../../../../../config'
 
 import {
   loadRakeHistory,
@@ -53,7 +54,7 @@ class AdminRake extends Component {
   }
 
   componentWillMount() {
-    document.title = 'Admin - H1Z1Brawl'
+    document.title = 'Admin - ' + config.metadata.name
   }
 
   updateSearch(event) {

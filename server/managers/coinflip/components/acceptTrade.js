@@ -5,6 +5,7 @@ import { generateSecret } from '../../../util/random'
 import { bot as botManager } from '../../'
 import { coinflipOffer as coinflipOfferType } from '../../../constants'
 import { getCoinflipTotal, getCreatorTotal, getTotalWinnings, getJoinerTotal } from '../../../util/coinflip'
+import { removeCache } from '../../../actions'
 
 CoinflipManager.prototype.handleAcceptedTrade = function(tradeOffer) {
   CoinflipOffer.findByTradeOffer(tradeOffer).then(coinflipOffer => {
@@ -15,6 +16,7 @@ CoinflipManager.prototype.handleAcceptedTrade = function(tradeOffer) {
     } else if (coinflipOffer.type === coinflipOfferType.WINNINGS) {
       this.handleWinningsAcceptance(coinflipOffer)
     }
+    removeCache(coinflipOffer.userId)
   }).catch(error => {
     this.log(`error while handling coinflip accept request: ${error.message}`)
   })

@@ -2,6 +2,7 @@ import { default as Bot } from '../bot'
 import TradeOfferManager from 'steam-tradeoffer-manager'
 import SteamCommunity from 'steamcommunity'
 import { Promise as bluebird } from 'bluebird'
+import config from '../../../../config'
 
 const {
   Invalid,
@@ -19,8 +20,6 @@ const {
 
 bluebird.promisifyAll(TradeOfferManager.prototype)
 
-const APP_ID = 433850
-
 Bot.prototype.createManager = function() {
   if (this.manager) return
 
@@ -30,7 +29,8 @@ Bot.prototype.createManager = function() {
     steam: this.client,
     domain: this.domain,
     community: this.community,
-    language: 'en'
+    language: 'en',
+    pollInterval: this.pollTime,
   })
 
   this.manager.on('newOffer', this.newOffer.bind(this))
@@ -51,7 +51,7 @@ Bot.prototype.setSteamCookies = function(cookies) {
 }
 
 Bot.prototype.canTrade = function(userObject) {
-  return userObject.escrowDays === 0 && userObject.probation ? (userObject.probation == 'true') : (true)
+  return userObject.escrowDays === 0 && userObject.probation ? (userObject.probation == false) : true
 }
 
 Bot.prototype.formatItems = function(items) {
@@ -65,12 +65,36 @@ Bot.prototype.formatItems = function(items) {
     }
     array.push({
       ...item,
-      appid: APP_ID,
-      contextid: 1
+      appid: config.metadata.gameId,
+      contextid: config.metadata.contextId
     })
   }
   return array
 }
+
+Bot.prototype.addMyItems = function(items, offer) {
+  return new Promise((resolve, reject) => {
+    if (items.length === 0) {
+      return resolve()
+    }
+
+    this.manager.getInventoryContents(config.metadata.gameId, config.metadata.contextId, true, (err, inventory) => {
+      if (err) {
+        return reject(err)
+      }
+      for (const myItem of items) {
+        const botIndex = inventory.findIndex((item) => item.market_hash_name === myItem.name)
+        if (botIndex >= 0) {
+          offer.addMyItem(inventory[botIndex])
+          inventory.splice(botIndex, 1)
+        } else {
+          this.log(`unable to find bot item for name: ${myItem.name}`)
+        }
+      }
+      return resolve()
+    });
+  })
+} 
 
 Bot.prototype.offerAccepted = function(offer) {
   if (offer.type === 'coinflip') {

@@ -1,9 +1,10 @@
 import { Promise as bluebird } from 'bluebird'
 import { default as Bot } from '../bot'
 import { jackpot } from '../../'
+import config from '../../../../config'
 
 Bot.prototype.handleJackpotFailed = function(offer, reason) {
-  /* all coinflip logic should be handled in the jackpot manager */
+  /* all jackpot logic should be handled in the jackpot manager */
   jackpot.handleDeclinedTrade.call(jackpot, offer, reason)
 }
 
@@ -31,15 +32,12 @@ Bot.prototype.sendJackpotRequest = function(jackpotOffer) {
 
       /* attach appid and contextid to all the items */
       const userItems = this.formatItems(jackpotOffer.userItems)
-      const botItems = this.formatItems(jackpotOffer.botItems)
 
-      steamOffer.setMessage(`Trade offer sent from H1Z1Brawl jackpot. Your trade ID: ${jackpotOffer._id}`)
+      steamOffer.setMessage(`Trade offer sent from ${config.metadata.name} jackpot. Your trade ID: ${jackpotOffer._id}`)
       steamOffer.addTheirItems(userItems)
-      steamOffer.addMyItems(botItems)
 
-      /* return a promise to send the trade offer through steam */
-      return sendAsync()
-    }).then(status => {
+      return this.addMyItems(jackpotOffer.botItems, steamOffer)
+    }).then(() => sendAsync()).then(status => {
       if (status === 'pending' && jackpotOffer.botItems.length === 0) {
         steamOffer.cancel()
         return reject(new Error('Trade went to escrow'))
@@ -50,6 +48,7 @@ Bot.prototype.sendJackpotRequest = function(jackpotOffer) {
       resolve(steamOffer) /* resolve the trade offer back to the user */
 
       if (jackpotOffer.botItems.length > 0) {
+        console.log(this.identitySecret, steamOffer.id)
         this.community.acceptConfirmationForObject(this.identitySecret, steamOffer.id, (err) => {
           if (err) {
             this.log(`error accepting confirmation on winnings: ${err.message}`)

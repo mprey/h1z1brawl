@@ -57,6 +57,18 @@ $navColor: rgba(22, 22, 22, 0.7);
     margin-right: 20px;
   }
 
+  .navbar-nav > li:not(.no-border) > a:after {
+      content:"";
+      background: rgba(#c1c1c1, 0.61);
+      position: absolute;
+      bottom: 0;
+      top: 0;
+      margin: auto 0;
+      left: 0;
+      height: 70%;
+      width: 1px;
+  }
+
   .navbar-nav > li > a {
     line-height: 35px;
     text-shadow: none;
@@ -76,18 +88,6 @@ $navColor: rgba(22, 22, 22, 0.7);
 
     &:hover {
       color: rgb(177, 179, 182);
-    }
-
-    &:after {
-      content:"";
-      background: rgba(#c1c1c1, 0.61);
-      position: absolute;
-      bottom: 0;
-      top: 0;
-      margin: auto 0;
-      left: 0;
-      height: 70%;
-      width: 1px;
     }
   }
 

@@ -72,6 +72,10 @@ export function getJackpotTotal(round) {
 
 function getUserDepositedAmount(round, user) {
   let total = 0.00
+  if (!user) {
+    return total
+  }
+  
   for (const index in round.deposits) {
     const deposit = round.deposits[index]
     if (deposit.id === user._id) {

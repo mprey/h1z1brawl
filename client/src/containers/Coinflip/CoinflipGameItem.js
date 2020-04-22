@@ -7,7 +7,7 @@ export default class CoinflipItem extends Component {
     return (
       <div>
         <img src={this.props.image} alt="item" />
-        <p>{this.props.price}</p>
+        <p>{Number(this.props.price).toFixed(2)}</p>
       </div>
     )
   }

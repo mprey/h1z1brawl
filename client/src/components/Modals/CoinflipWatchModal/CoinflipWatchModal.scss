@@ -69,64 +69,46 @@
   }
 
   .FlipContainer {
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
 
-    .Flip {
-      margin-left: 269px !important;
+    .Flipper {
+      transform-style: preserve-3d;
+      position: relative;
+      transition: 0.6s;
+      height: 60px;
+      width: 60px;
       animation-name: wanimShow;
       animation-iteration-count: 1;
       animation-timing-function: ease-out;
       animation-duration: 4s;
-      transform-style: preserve-3d;
-    }
-
-    .red {
-      position: absolute;
-      display: block;
-      top: 0;
-      left: 0;
-      width: 60px;
-      height: 60px;
-      background-image: url(../../../static/coin-tails.png);
-      backface-visibility: hidden;
-      background-size: contain;
-
-      &:after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 60px;
-        height: 60px;
-        background-image: url(../../../static/coin-heads.png);
-        transform: rotateX(180deg);
-        backface-visibility: hidden;
-        background-size: contain;
-      }
     }
 
     .black {
-      position: absolute;
-      display: block;
-      top: 0;
-      left: 0;
-      width: 60px;
-      height: 60px;
       background-image: url(../../../static/coin-heads.png);
-      backface-visibility: hidden;
-      background-size: contain;
+    }
 
-      &:after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 60px;
-        height: 60px;
-        background-image: url(../../../static/coin-tails.png);
-        background-size: contain;
-        transform: rotateX(180deg);
-        backface-visibility: hidden;
-      }
+    .red {
+      background-image: url(../../../static/coin-tails.png);
+    }
+
+    .Front, .Back {
+      height: 60px;
+      width: 60px;
+      background-size: contain;
+      backface-visibility: hidden;
+      position: absolute;
+      top: 0;
+      left: 0
+    }
+
+    .Front {
+      z-index: 2;
+    }
+
+    .Back {
+      transform: rotateY(180deg);
     }
   }
 
@@ -138,7 +120,7 @@
       position: absolute;
       left: 0; right: 0;
 
-      div {
+      div:not(.nomargin) {
         margin-left: 280px;
       }
     }
@@ -197,22 +179,27 @@
     }
 
     .Item:not(:last-child) {
-      border-bottom: 1px solid rgb(71, 71, 71);
+      border-bottom: 1px solid rgb(148, 113, 113);
     }
 
     .Item:not(:first-child) {
       height: 80px;
+      display: flex;
     }
 
     .Item {
       margin: 0px 5px;
       padding: 8px 0px;
 
-      img {
-        float: left;
+      .Item__Image {
         height: 65px;
         width: 65px;
         margin-right: 10px;
+      }
+
+      img {
+        height: 65px;
+        width: 65px;
       }
 
       p {
@@ -229,12 +216,15 @@
 
 @keyframes wanimShow {
   0% {
-    transform: scale(0.1) rotateX(1440deg);
+    transform: scale(0.8) rotateX(1440deg);
   }
-  75% {
-    transform: scale(1.5) rotateX(0);
+  50% {
+    transform: scale(1.3) rotateX(90deg);
+  }
+  60% {
+    transform: scale(1.3) rotateX(0);
   }
   100% {
-    transform: scale(1) rotateX(0);
+    transform: scale(1) rotateX(720deg);
   }
 }

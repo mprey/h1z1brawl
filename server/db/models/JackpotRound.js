@@ -30,7 +30,7 @@ var jackpotRoundSchema = new Schema({
   timerStart: { type: Date },
   dateCreated: { type: Date, default: Date.now },
   dateCompleted: { type: Date }
-})
+}, { usePushEach: true })
 
 jackpotRoundSchema.methods.setTimerStarted = function() {
   this.timerStart = new Date()
