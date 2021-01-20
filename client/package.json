@@ -10,7 +10,7 @@
     "express-session": "^1.15.2",
     "font-awesome": "^4.7.0",
     "fs": "0.0.1-security",
-    "gsap": "^1.19.1",
+    "gsap": "^3.6.0",
     "history": "^4.6.1",
     "http": "0.0.0",
     "immutability-helper": "^2.2.0",
