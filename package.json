@@ -29,7 +29,7 @@
     "redis": "^2.7.1",
     "request": "^2.81.0",
     "request-promise-native": "^1.0.4",
-    "socket.io": "^2.0.1",
+    "socket.io": "^2.4.0",
     "socketio-jwt": "^4.5.0",
     "steam-totp": "^1.4.0",
     "steam-tradeoffer-manager": "^2.10.1",
