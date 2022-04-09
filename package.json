@@ -20,7 +20,7 @@
     "jsonwebtoken": "^7.4.0",
     "jwt-decode": "^2.2.0",
     "md5": "^2.2.1",
-    "moment": "^2.18.1",
+    "moment": "^2.29.2",
     "mongoose": "^5.9.10",
     "mongoose-auto-increment": "^5.0.1",
     "passport": "^0.3.2",
